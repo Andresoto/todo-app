@@ -1,0 +1,57 @@
+
+.card {
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__actions {
+    display: flex;
+    gap: .5rem;
+}
+
+.text-weight {
+    font-weight: 500;
+}
+
+.complete-task {
+    text-decoration: line-through;
+}
+
+mat-icon {
+    font-size: 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.success {
+    background-color: green;
+}
+
+.pending {
+    background-color: #ffcc00;
+}
+
+.edit {
+    background-color: #002fff;
+}
+
+.show {
+    background-color: #ff2f2f;
+}
+
+.person-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.person-content {
+    padding: 1rem;
+    border-top: 1px solid #d3d3d3;
+}
