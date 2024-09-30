@@ -1,0 +1,9 @@
+.mat-toolbar{
+    display: flex;
+    justify-content: center;
+    background: rgb(225,32,42);
+    background: linear-gradient(90deg, rgba(225,32,42,1) 0%, rgba(252,196,50,1) 29%, rgba(0,145,215,1) 56%, rgba(85,189,236,1) 71%, rgba(85,189,236,1) 83%, rgba(0,145,215,1) 96%);
+    span {
+        color: white;
+    }
+}
