@@ -29,7 +29,7 @@ export class TaskComponent implements OnInit {
   activeRoute = inject(ActivatedRoute);
   formHelper = inject(FormHelperService);
   formTask: FormGroup = this.createForm();
-  public id: string | null = null;
+  id: string | null = null;
 
   get persons() {
     return this.formTask.get('person') as FormArray;

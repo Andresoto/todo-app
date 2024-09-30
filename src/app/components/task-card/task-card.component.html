@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="person-container" *ngIf="showContent">
-        <p>{{task.date | date: 'dd/MM/yyyy'}}</p>
+        <p>Fecha Limite: {{task.date | date: 'dd/MM/yyyy'}}</p>
         <div class="person-content" *ngFor="let person of task.person">
             <p>Nombre: {{person.name}}</p>
             <p>Edad: {{person.age}}</p>
