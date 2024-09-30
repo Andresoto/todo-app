@@ -2,6 +2,7 @@
     <div class="card__header">
         <span class="text-weight" [ngClass]="{'complete-task': task.status === 'DONE'}">
             {{task.name | titlecase}} - {{task.status === 'DONE' ? 'Completada' : 'Pendiente'}}
+            <p>Fecha Limite: {{task.date | date: 'dd/MM/yyyy'}}</p>
         </span>
         <div class="card__actions">
             <button class="btn-circle success" [ngClass]="{'pending': task.status === 'DONE'}" (click)="updateState(task.id)">
@@ -16,7 +17,6 @@
         </div>
     </div>
     <div class="person-container" *ngIf="showContent">
-        <p>Fecha Limite: {{task.date | date: 'dd/MM/yyyy'}}</p>
         <div class="person-content" *ngFor="let person of task.person">
             <p>Nombre: {{person.name}}</p>
             <p>Edad: {{person.age}}</p>
