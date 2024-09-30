@@ -1,0 +1,95 @@
+
+<div class="container">
+    <h1>{{ id ? 'Editar' : 'Crear' }} tarea </h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formTask">
+        <mat-form-field class="inputs" appearance="outline">
+            <mat-label >Nombre</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="formHelper.checkFormErrors(formTask, 'name')">
+                {{formHelper.getFormErrors(formTask, 'name')}}
+            </mat-error>
+        </mat-form-field>
+
+          <mat-form-field class="inputs" appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="formHelper.checkFormErrors(formTask, 'date')">
+                {{formHelper.getFormErrors(formTask, 'date')}}
+            </mat-error>
+          </mat-form-field>
+            
+        <hr>
+        <div class="title-section">
+            <h2>Personas</h2>
+            <button class="btn-circle add" type="button" (click)="addPerson()">
+              <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <ng-container formArrayName="person">
+            <ng-container *ngFor="let person of persons.controls; let i=index">
+                <div class="title-section">
+                    <h3>Persona {{i + 1}}</h3>
+                    <button class="btn-circle delete" type="button" (click)="removePerson(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+                <div [formGroupName]="i">
+                    <mat-form-field class="inputs" appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name">
+                        <mat-error *ngIf="formHelper.checkFormErrors(getPersonFormGroup(i), 'name')">
+                            {{formHelper.getFormErrors(getPersonFormGroup(i), 'name')}}
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="inputs" appearance="outline">
+                        <mat-label>Edad</mat-label>
+                        <input matInput type="number" formControlName="age">
+                        <mat-error *ngIf="formHelper.checkFormErrors(getPersonFormGroup(i), 'age')">
+                            {{formHelper.getFormErrors(getPersonFormGroup(i), 'age')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="title-section">
+                        <h3>Habilidades</h3>
+                        <button class="btn-circle add" type="button" (click)="addSkill(i)">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <ng-container formArrayName="skills">
+                        <ng-container *ngFor="let skill of getSkills(i).controls; let j=index">
+                            <div style="display: flex; gap: 1rem;">
+                                <mat-form-field class="inputs" appearance="outline">
+                                    <mat-label>Nombre habilidad</mat-label>
+                                    <input matInput [formControl]="castToFormControl(skill)">
+                                    <mat-error *ngIf="formHelper.checkControlErrors(castToFormControl(skill))">
+                                        {{formHelper.getControlErrors(castToFormControl(skill))}}
+                                    </mat-error>
+                                </mat-form-field>
+                                <div class="btn-icon" *ngIf="getSkills(i).controls.length > 1">
+                                    <button class="btn-circle delete" type="button" (click)="removeSkill(i,j)">
+                                      <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <hr>
+            </ng-container>
+        </ng-container>
+        
+        <mat-error *ngIf="formHelper.checkFormErrors(formTask, 'person')">
+            {{formHelper.getFormErrors(formTask, 'person')}}
+        </mat-error>
+        <div class="actions">
+            <button mat-raised-button type="button" [routerLink]="['/']">
+                Cancelar
+            </button>
+            <button mat-raised-button type="submit">
+                {{ id ? 'Actualizar' : 'Guardar' }} tarea 
+            </button>
+        </div>
+    </form>
+</div>

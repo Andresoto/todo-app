@@ -1,0 +1,53 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.inputs {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 1rem;
+}
+
+.btn-icon {
+    padding-top: 0.5rem;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.delete {
+    background-color: #ff2f2f;
+}
+
+.add {
+    background-color: #008000;
+}
+
+@media (min-width: 768px) {
+    .container {
+        align-items: inherit;
+        max-width: 1156px;
+        margin: 0 auto;
+    }
+
+    .actions {
+        justify-content: center;
+        gap: 2rem;
+    }
+}
