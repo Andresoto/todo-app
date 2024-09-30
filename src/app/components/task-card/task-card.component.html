@@ -12,7 +12,7 @@
                 <mat-icon>edit</mat-icon>
             </button>
             <button class="btn-circle show" (click)="showContent = !showContent">
-                <mat-icon>visibility</mat-icon>
+                <mat-icon>{{showContent ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </div>
     </div>
